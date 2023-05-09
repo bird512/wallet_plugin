@@ -1,0 +1,18 @@
+sequenceDiagram
+    %% participant 用户 as User
+    %% participant DApp as DApp
+    %% participant 钱包 as Wallet
+    %% participant DCP钱包 as DCP_Wallet
+    %% participant 区块链 as Blockchain
+
+    User->>DApp: 发起交易
+    DApp->>Wallet: 发送交易请求
+    Wallet->>User: 显示交易详情
+    User->>Wallet: 确认交易
+    Wallet->>DCP: 发送签名请求
+    DCP->>DCP: 使用MPC签名交易
+    DCP->>Blockchain: 广播交易
+    Blockchain->>DCP: 交易结果
+    DCP->>Wallet: 返回交易结果
+    Wallet->>DApp: 返回交易结果
+    DApp->>User: 显示交易结果
